@@ -1,0 +1,50 @@
+Time Recorded   			Activity
+2024-06-16 15:14:16			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-06-16 16:51:09			Staff with Id : 1013 and name : TALHA KHAN - SECURITY GUARD logged in successfully.
+2024-06-16 16:51:47			Staff with Id : 1007 and name : SARAH LEE - STAFF SUPERVISOR logged in successfully.
+2024-06-16 16:51:53			Personal details were updated.
+2024-06-21 16:33:33			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-07-11 23:10:08			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-12 00:00:01			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-12 00:00:02			Low stock alert was given.
+2024-07-12 00:00:25			Item APPLE IPHONE 13 restocked.
+2024-07-12 00:17:06			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-12 00:17:07			Low stock alert was given.
+2024-07-12 00:17:13			Item APPLE IPHONE 13 restocked.
+2024-07-12 00:23:15			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-12 00:29:22			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-12 00:31:42			New item SAMSUNG S24 was added to the inventory.
+2024-07-12 00:32:26			Item NOTHING was removed from the inventory.
+2024-07-12 00:33:48			Item SAMSUNG S24 details's were updated.
+2024-07-13 00:42:16			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-13 00:56:27			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-13 01:24:38			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-13 01:25:33			Order of id 1004 was marked completed.
+2024-07-13 01:33:38			Failed attempt to log in recorded.
+2024-07-13 01:34:35			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-07-13 01:37:28			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-07-13 01:40:31			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-07-13 01:41:19			Staff with Id : 1005 and name : FAISAL IQBAL - SHIPPING CLERK logged in successfully.
+2024-07-13 01:42:04			Staff with Id : 1007 and name : SARAH LEE - STAFF SUPERVISOR logged in successfully.
+2024-07-13 01:43:02			Staff with Id : 1010 and name : DAVID KIM - OPERATOR logged in successfully.
+attendance
+2024-06-16 16:51:13			Staff : TALHA KHAN - SECURITY GUARD Marked Entry.
+2024-06-16 16:51:18			Staff : TALHA KHAN - SECURITY GUARD Marked Exit.
+2024-06-16 16:51:47			Staff : SARAH LEE - STAFF SUPERVISOR Marked Entry.
+2024-06-16 16:51:56			Staff : SARAH LEE -  Marked Exit.
+2024-06-21 16:33:33			Staff : AYESHA KHAN - INVENTORY CLERK Marked Entry.
+2024-06-21 16:34:00			Staff : AYESHA KHAN -  Marked Exit.
+2024-07-07 23:20:58			Staff : FAISAL IQBAL - SHIPPING CLERK Marked Entry.
+2024-07-07 23:21:07			Staff : FAISAL IQBAL -  Marked Exit.
+2024-07-07 23:21:27			Staff : AYESHA KHAN - INVENTORY CLERK Marked Entry.
+2024-07-07 23:21:33			Staff : AYESHA KHAN -  Marked Exit.
+2024-07-13 01:34:35			Staff : AYESHA KHAN - INVENTORY CLERK Marked Entry.
+2024-07-13 01:34:43			Staff : AYESHA KHAN -  Marked Exit.
+2024-07-13 01:37:28			Staff : AYESHA KHAN - INVENTORY CLERK Marked Entry.
+2024-07-13 01:38:00			Staff : AYESHA KHAN -  Marked Exit.
+2024-07-13 01:40:31			Staff : AYESHA KHAN - INVENTORY CLERK Marked Entry.
+2024-07-13 01:40:55			Staff : AYESHA KHAN -  Marked Exit.
+2024-07-13 01:41:19			Staff : FAISAL IQBAL - SHIPPING CLERK Marked Entry.
+2024-07-13 01:41:30			Staff : FAISAL IQBAL -  Marked Exit.
+2024-07-13 01:42:04			Staff : SARAH LEE - STAFF SUPERVISOR Marked Entry.
+2024-07-13 01:42:12			Staff : SARAH LEE -  Marked Exit.
