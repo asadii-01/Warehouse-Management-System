@@ -251,7 +251,9 @@ void ItemCollection::saveToFile(string filename) {
 
         for (const auto& i : itemList) {
             i->StockItem::WriteToFile(Writer);
+            delete i;
         }
+        itemList.clear();
     }
     catch (exception& e) {
         cerr << "\n\n\t\033[31mError: " << e.what() << "\033[0m" << endl;
@@ -263,7 +265,7 @@ void ItemCollection::saveToFile(string filename) {
 void ItemCollection::displayList() {
     do {
         cout << "\n\n\tCategories: ";
-        cout << "\n\n\t\t01. ELECTRONICS ";
+        cout << "\n\n\t\t01. ELECTRONICS";
         cout << "\n\n\t\t02. COMPUTER";
         cout << "\n\n\t\t03. AUTOMOTIVE";
         cout << "\n\n\t\t04. SPORTS";

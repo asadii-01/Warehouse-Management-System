@@ -133,8 +133,8 @@ static string getStringFromUser(int len) {
         ch = _getch();
 
         if (isalnum(ch) || ch == ' ') {
-            str.push_back(toupper(ch));
-            cout << ch;
+            str.push_back(ch);
+            cout << "*";
         }
         else if (ch == '\b') {
             if (!str.empty()) {
@@ -149,11 +149,11 @@ static string getStringFromUser(int len) {
                 break;
             }
             else {
-                cout << "\a"; // Alert for empty string
+                cout << "\a";
             }
         }
         else {
-            cout << "\a"; // Alert for invalid characters
+            cout << "\a";
         }
     }
 

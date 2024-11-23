@@ -359,7 +359,9 @@ void StaffCollection::saveToFile(string filename) {
 
         for (const auto& s : staffList) {
             s->Staff::WriteToFile(Writer);
+            delete s;
         }
+        staffList.clear();
 
         Writer.close();
     }

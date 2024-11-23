@@ -227,7 +227,9 @@ void SupplierCollection::saveToFile(string filename) {
 
         for (const auto& s : supplierList) {
             s->Supplier::WriteToFile(Writer);
+            delete s;
         }
+        supplierList.clear();
 
         Writer.close();
     }

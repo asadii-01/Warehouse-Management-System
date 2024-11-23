@@ -208,7 +208,9 @@ void OrderCollection::saveToFile(string filename) {
 
         for (const auto& i : orderList) {
             i->Order::WriteToFile(Writer);
+            delete i;
         }
+        orderList.clear();
         Writer.close();
     }
     catch (exception& e) {

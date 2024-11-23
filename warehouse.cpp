@@ -196,9 +196,6 @@ void Warehouse::logInPage(bool& bLI, int& lID, bool& exit) {
                 if (tempmail == s->getContactInfo()) {
                     staffFound = true;
 
-
-                    staffFound = true;
-
                     if (s->getPin() == 0) {
                         Employees.newLogIn(s);
                         cout << "\n\n\t\t\033[32mPin saved successfully!!\tRemeber it for future login\033[0m";
@@ -315,7 +312,7 @@ void Warehouse::inventoryMenu() {
             case 3:
                 system("cls");
                 cout << "\t\t\t\t\t\033[34m:: INVENTORY MANAGMENT ::\033[0m\n\t\t\t\t\t";
-                DrawBlueLine(15, '-');
+                DrawBlueLine(24, '-');
                 while (true) {
                     cin >> item;
                     if (Inventory.itemExists(*item)) {
@@ -337,7 +334,7 @@ void Warehouse::inventoryMenu() {
             case 4:
                 system("cls");
                 cout << "\t\t\t\t\t\033[34m:: INVENTORY MANAGMENT ::\033[0m\n\t\t\t\t\t";
-                DrawBlueLine(15, '-');
+                DrawBlueLine(24, '-');
 
                 cout << "\n\n\t\tEnter Name of the item to be removed: ";
                 input = getStringFromUser(20);
@@ -360,7 +357,7 @@ void Warehouse::inventoryMenu() {
             case 5:
                 system("cls");
                 cout << "\t\t\t\t\t\033[34m:: INVENTORY MANAGMENT ::\033[0m\n\t\t\t\t\t";
-                DrawBlueLine(15, '-');
+                DrawBlueLine(24, '-');
 
                 cout << "\n\n\t\tEnter item name to be modified : ";
                 input = getStringFromUser(20);
@@ -398,7 +395,7 @@ void Warehouse::inventoryMenu() {
                 break;
 
             case 6:
-                Inventory.saveToFile("inventory.txt");
+                //Inventory.saveToFile("inventory.txt");
                 delete item;
                 item = NULL;
                 return;
@@ -516,7 +513,7 @@ void Warehouse::orderMenu() {
                 }
 
             case 5:
-                Orders.saveToFile("orders.txt");
+                //Orders.saveToFile("orders.txt");
                 delete order;
                 order = NULL;
                 return;
@@ -650,7 +647,7 @@ void Warehouse::staffMenu() {
                 break;
 
             case 5:
-                Employees.saveToFile("staff.txt");
+                //Employees.saveToFile("staff.txt");
                 delete staff;
                 staff = NULL;
                 return;
@@ -776,7 +773,7 @@ void Warehouse::supplyMenu() {
                 break;
 
             case 5:
-                Suppliers.saveToFile("suppliers.txt");
+                //Suppliers.saveToFile("suppliers.txt");
                 delete supplier;
                 supplier = NULL;
                 return;
@@ -903,7 +900,6 @@ void Warehouse::mainPage_M(Staff* user) {
 
             case 4:
                 Inventory.saveToFile("inventory.txt");
-                Employees.saveToFile("staff.txt");
                 Orders.saveToFile("orders.txt");
                 Suppliers.saveToFile("suppliers.txt");
 
@@ -965,7 +961,6 @@ void Warehouse::mainPage_Ic(Staff* user) {
         case 4:
             Inventory.saveToFile("inventory.txt");
             Suppliers.saveToFile("suppliers.txt");
-            Employees.saveToFile("staff.txt");
             report.logAttendance("Staff : " + user->getName() + " - " + " Marked Exit.");
 
             LoadingScreen("\033[31m Logging Out");
@@ -1012,7 +1007,6 @@ void Warehouse::mainPage_Sc(Staff* user) {
         case 3:
             Inventory.saveToFile("inventory.txt");
             Orders.saveToFile("orders.txt");
-            Employees.saveToFile("staff.txt");
             report.logAttendance("Staff : " + user->getName() + " - " + " Marked Exit.");
             
             LoadingScreen("\033[31m Logging Out");
@@ -1053,7 +1047,6 @@ void Warehouse::mainPage_Ss(Staff* user) {
             break;
 
         case 3:
-            Employees.saveToFile("staff.txt");
             report.logAttendance("Staff : " + user->getName() + " - " + " Marked Exit.");
 
             LoadingScreen("\033[31m Logging Out");
@@ -1102,8 +1095,6 @@ void Warehouse::mainPage_Others(Staff* user){
             break;
 
         case 4:
-            Employees.saveToFile("staff.txt");
-
             LoadingScreen("\033[31m Logging Out");
             return;
 
