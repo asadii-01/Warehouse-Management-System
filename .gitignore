@@ -1,0 +1,50 @@
+# Ignore binary files
+*.o
+*.out
+*.exe
+*.a
+*.so
+*.dll
+*.dylib
+
+# Ignore build directories
+/build/
+/bin/
+/obj/
+/Warehouse Management System/x64/
+/Warehouse Management System/Debug/
+
+# Ignore compiled static libraries
+*.lib
+
+# Ignore debug files
+*.gch
+*.dSYM/
+*.pdb
+*.ilk
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+.vs/
+*.iml
+*.suo
+*.ncb
+*.sdf
+*.opensdf
+*.cache
+*.VC.db
+
+# Ignore CMake generated files
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+
+# Ignore any personal files
+*.private

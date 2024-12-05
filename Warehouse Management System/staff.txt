@@ -1,0 +1,15 @@
+staffId,staffName,role,email,pin
+1000,ASAD TAUQEER,1,asad.t@gmail.com,3036
+1001,USMAN ALI,1,m.usman@uog.edu.com,1111
+1002,AYESHA KHAN,2,ayeshakhan@example.com,5557
+1003,MICHEAL LEE,5,michael.lee@warehouse.com,1545
+1004,SARAH GARCIA,4,sarah.garcia@warehouse.com,1234
+1005,FAISAL IQBAL,3,faisaliqbal@example.com,9999
+1006,OMAR FAROOQ,2,omarfarooq@example.com,5551
+1007,SARAH LEE,4,sarahlee@example.com,2345
+1008,KEVIN WHITE,5,kevinwhite@example.com,6789
+1009,HINA RAZA,3,hinaraza@example.com,1239
+1010,DAVID KIM,5,davidkim@example.com,5671
+1011,MIKE DAVIS,6,mikedavis@example.com,7890
+1012,BOB JOHNSON,6,bobjohnson@example.com,9012
+1013,TALHA KHAN,6,talahkhan@example.com,1239
