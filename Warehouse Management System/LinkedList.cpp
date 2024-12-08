@@ -12,7 +12,7 @@ LinkedList::~LinkedList()
 {
 	delete start;
 	delete current;
-	delete next;
+    // delete next;
 }
 
 void LinkedList::createNode(StockItem* item)

@@ -25,7 +25,7 @@ public:
 	// Getters
 	int getOrderId();
 
-	vector<pair<string, int>> getItemsFromOrder();
+	vector<pair<string, int>>& getItemsFromOrder();
 
 	pair<string, int> getItem(string item);
 

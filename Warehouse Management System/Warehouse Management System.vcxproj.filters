@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Base Classes">
+      <UniqueIdentifier>{66d1d0fa-77d6-4149-9041-7b03f5a4e809}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Base Classes">
+      <UniqueIdentifier>{03636880-19f1-432b-9968-1f58d4a5aa5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Collection Classes">
+      <UniqueIdentifier>{74c3e11b-4555-4eb0-ae2f-4804021a7f98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Collection Classes">
+      <UniqueIdentifier>{b0e90470-41d2-4cc6-bf0f-38b71ea91d37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,79 +33,85 @@
     <ClCompile Include="warehouse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stockitem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="staff.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Source Files\Base Classes</Filter>
     </ClCompile>
     <ClCompile Include="order.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="supplier.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="itemCollection.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="orderCollection.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="staffCollection.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="supplierCollection.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Base Classes</Filter>
     </ClCompile>
     <ClCompile Include="record.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Base Classes</Filter>
     </ClCompile>
-    <ClCompile Include="LinkedList.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="staff.cpp">
+      <Filter>Source Files\Base Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="stockitem.cpp">
+      <Filter>Source Files\Base Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="supplier.cpp">
+      <Filter>Source Files\Base Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="itemCollection.cpp">
+      <Filter>Source Files\Collection Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="orderCollection.cpp">
+      <Filter>Source Files\Collection Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="staffCollection.cpp">
+      <Filter>Source Files\Collection Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="supplierCollection.cpp">
+      <Filter>Source Files\Collection Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Queue.cpp">
+      <Filter>Source Files\Base Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="warehouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="stockitem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="staff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="order.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="supplier.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="itemCollection.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="orderCollection.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="staffCollection.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="supplierCollection.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="record.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="person.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="collection.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Base Classes</Filter>
     </ClInclude>
     <ClInclude Include="LinkedList.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="person.h">
+      <Filter>Header Files\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="order.h">
+      <Filter>Header Files\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="staff.h">
+      <Filter>Header Files\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="record.h">
+      <Filter>Header Files\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="stockitem.h">
+      <Filter>Header Files\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="supplier.h">
+      <Filter>Header Files\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="itemCollection.h">
+      <Filter>Header Files\Collection Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="orderCollection.h">
+      <Filter>Header Files\Collection Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="staffCollection.h">
+      <Filter>Header Files\Collection Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="supplierCollection.h">
+      <Filter>Header Files\Collection Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Header Files\Base Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
