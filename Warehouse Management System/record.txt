@@ -1,4 +1,9 @@
 Time Recorded   			Activity
+2024-12-07 19:50:48			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-12-07 19:50:30			Failed attempt to log in recorded.
+2024-12-07 19:50:13			Failed attempt to log in recorded.
+2024-12-05 18:37:53			Failed attempt to log in recorded.
+2024-12-05 18:37:41			Failed attempt to log in recorded.
 2024-12-04 11:14:25			Personal details were updated.
 2024-12-04 11:12:10			Order of id 1001 was updated.
 2024-12-04 11:09:37			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
@@ -72,6 +77,8 @@ Time Recorded   			Activity
 2024-11-28 23:14:38			Staff of id DAD was removed from the list.
 2024-11-29 16:22:31			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
 2024-11-29 16:23:52			New item TEST ITEM was added to the inventory.
+2024-12-05 11:45:04			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-12-05 18:39:54			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
 attendance
 2024-06-16 16:51:13			Staff : TALHA KHAN - SECURITY GUARD Marked Entry.
 2024-06-16 16:51:18			Staff : TALHA KHAN - SECURITY GUARD Marked Exit.
