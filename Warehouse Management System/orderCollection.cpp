@@ -4,28 +4,33 @@
 
 OrderCollection::OrderCollection() { orderList = {}; }
 
-vector<Order*> OrderCollection::getOrders() {
-    return orderList;
+vector<Order*> OrderCollection::getOrders() { 
+    return orderList.allOrders();
 }
 
 void OrderCollection::addToList(Order& o) {
     Order* order = new Order(o.getOrderId(), o.getItemsFromOrder());
-    orderList.push_back(order);
+    orderList.enqueue(order);
+    orderList.priortize();
 }
 
 void OrderCollection::removeFromList(string Id) {
     int orderId = stoi(Id);
-    bool itemFound = false;
+    bool idFound = false;
     try {
-        for (int i = 0; i <= orderList.size(); i++) {
+
+        /*for (int i = 0; i <= orderList.size(); i++) {
             if (orderList[i]->getOrderId() == orderId) {
                 orderList.erase(orderList.begin() + i);
                 itemFound = true;
                 break;
             }
-        }
-        if (!itemFound) {
-            throw runtime_error("Order with ID " + to_string(orderId) + " not found.\n");
+        }*/
+
+        orderList.dequeueByID(orderId, idFound);
+
+        if (!idFound) {
+            throw runtime_error("Order with ID " + Id + " not found.\n");
         }
     }
     catch (exception& e) {
@@ -54,7 +59,7 @@ void OrderCollection::modifyDetails(string id) {
                 cout << "\n\n\t\tEnter name of the item to add: ";
                 newInput = getStringFromUser(25);
 
-                if (itemExistsInOrder(newInput)) {
+                if (o->itemExistsInOrder(newInput)) {
                     throw runtime_error("Item already present in the order !!!");
                     break;
                 }
@@ -71,7 +76,7 @@ void OrderCollection::modifyDetails(string id) {
             case 2:
                 cout << "\n\n\t\tEnter name of the item to be removed : ";
                 newInput = getStringFromUser(25);
-                if (itemExistsInOrder(newInput)) {
+                if (o->itemExistsInOrder(newInput)) {
                     o->removeItemFromOrder(newInput);
                     cout << "\n\t\033[32mItem removed!!\033[0m";
                     break;
@@ -83,7 +88,7 @@ void OrderCollection::modifyDetails(string id) {
             case 3:
                 cout << "\n\n\t\tEnter name of the item to be updated : ";
                 newInput = getStringFromUser(25);
-                if (itemExistsInOrder(newInput)) {
+                if (o->itemExistsInOrder(newInput)) {
                     cout << "\n\n\t\tEnter new amount : ";
                     int quantity = getNumberFromUser(10);
 
@@ -92,7 +97,7 @@ void OrderCollection::modifyDetails(string id) {
                         break;
                     }
                     else {
-                        for (auto& i : getItemsFromOrder()) {
+                        for (auto& i : o->getItemsFromOrder()) {
                             if (i.first == newInput) {
                                 i.second = quantity;
                             }
@@ -125,27 +130,35 @@ Order* OrderCollection::findOrderById(int orderId) {
             throw runtime_error("Order with id " + to_string(orderId) + "not found");
         }
         else {
-            for (Order* i : orderList) {
+            /*for (Order* i : orderList) {
                 if (i->getOrderId() == orderId) {
                     return i;
                 }
-            }
+            }*/
+
+            return orderList.findById(orderId);
         }
     }
     catch (exception& e) {
         cerr << "\n\n\t\033[31mError: " << e.what() << "\033[0m" << endl;
         Pause();
+        return nullptr;
     }
-    return NULL;
 }
 
 bool OrderCollection::idExists(int id){
-    for (Order* o : orderList) {
+    /*for (Order* o : orderList) {
         if (o->getOrderId() == id) {
             return true;
         }
+    }*/
+
+    if (orderList.findById(id) != nullptr) {
+        return true;
     }
-    return false;
+    else {
+        return false;
+    }
 }
 
 bool OrderCollection::nameExists(string name){
@@ -153,12 +166,19 @@ bool OrderCollection::nameExists(string name){
 }
 
 bool OrderCollection::orderExists(Order& order){
-    for (Order* o : orderList) {
+    /*for (Order* o : orderList) {
         if (o->getOrderId() == order.getOrderId()) {
             return true;
         }
+    }*/
+
+    if (orderList.find(&order)) {
+        return true;
     }
-    return false;
+    else
+    {
+        return false;
+    }
 }
 
 void OrderCollection::loadFromFile(string filename) {
@@ -206,11 +226,10 @@ void OrderCollection::saveToFile(string filename) {
 
         Writer << "orderId,Items...\n";
 
-        for (const auto& i : orderList) {
-            i->Order::WriteToFile(Writer);
-            delete i;
+        for (const auto o : orderList.allOrders()) {
+            o->WriteToFile(Writer);
         }
-        orderList.clear();
+
         Writer.close();
     }
     catch (exception& e) {
@@ -231,11 +250,12 @@ void OrderCollection::displayList() {
     DrawBlueLine(100, '=');
     cout << endl;
 
-    for (auto& o : orderList) {
+    for (auto& o : orderList.allOrders()) {
         cout << o;
     }
 }
 
 Order OrderCollection::operator[](int i) {
-    return *orderList[i];
+    auto orders = orderList.allOrders();
+    return *orders[i];
 }

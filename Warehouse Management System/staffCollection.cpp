@@ -185,7 +185,7 @@ void StaffCollection::personalProfile(Staff* user) {
     bool back = false;
     LoadingScreen("Loading");
     while (!back) {
-        cout << "\n\n\n\t\t\t\t\t    \033[32m:: PERSONAL PROFILE  ::\033[0m\n\t\t\t\t\t\    ";
+        cout << "\n\n\n\t\t\t\t\t    \033[32m:: PERSONAL PROFILE  ::\033[0m\n\t\t\t\t\t    ";
         DrawGreenLine(22, '-');
         cout << "\n\n";
 

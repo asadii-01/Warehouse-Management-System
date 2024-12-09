@@ -132,6 +132,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="order.cpp" />
     <ClCompile Include="orderCollection.cpp" />
+    <ClCompile Include="Queue.cpp" />
     <ClCompile Include="record.cpp" />
     <ClCompile Include="staff.cpp" />
     <ClCompile Include="staffCollection.cpp" />
@@ -145,6 +146,7 @@
     <ClInclude Include="itemCollection.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="orderCollection.h" />
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="record.h" />
     <ClInclude Include="staffCollection.h" />

@@ -10,7 +10,7 @@ int Order::getOrderId() {
 	return orderId;
 }
 
-vector<pair<string, int>> Order::getItemsFromOrder() {
+vector<pair<string, int>>& Order::getItemsFromOrder() {
 	return items;
 }
 
@@ -25,6 +25,7 @@ pair<string, int> Order::getItem(string item) {
 
 // setters
 void Order::addItemToOrder(string stock, int quantity) {
+
 	items.push_back(make_pair(stock, quantity));
 }
 
