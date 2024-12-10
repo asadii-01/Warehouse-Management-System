@@ -166,17 +166,17 @@ static bool isValidEmail(const string& email) {
 }
 
 // Functions to draw lines
-static void DrawGreenLine(int n, char ch)
+static void DrawGreenLine(int n,unsigned char ch)
 {
     for (int i = 0; i < n; i++)
         cout << "\033[32m" << ch << "\033[0m";
 }
-static void DrawRedLine(int n, char ch)
+static void DrawRedLine(int n,unsigned char ch)
 {
     for (int i = 0; i < n; i++)
         cout << "\033[31m" << ch << "\033[0m";
 }
-static void DrawBlueLine(int n, char ch)
+static void DrawBlueLine(int n,unsigned char ch)
 {
     for (int i = 0; i < n; i++)
         cout << "\033[34m" << ch << "\033[0m";

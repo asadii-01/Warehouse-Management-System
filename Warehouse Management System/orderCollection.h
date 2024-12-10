@@ -1,13 +1,13 @@
 #pragma once
 #include "order.h"
 #include "collection.h"
-#include <queue>
+#include "Queue.h"
 
 class OrderCollection : public Order, public Collection {
 
 private:
-    vector<Order*> orderList;
-    //priority_queue<Order*> orderList;
+    //vector<Order*> orderList;
+    Queue orderList;
 
 public: 
 
