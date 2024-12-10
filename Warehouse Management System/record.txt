@@ -1,4 +1,85 @@
 Time Recorded   			Activity
+2024-12-07 19:50:48			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-12-07 19:50:30			Failed attempt to log in recorded.
+2024-12-07 19:50:13			Failed attempt to log in recorded.
+2024-12-05 18:37:53			Failed attempt to log in recorded.
+2024-12-05 18:37:41			Failed attempt to log in recorded.
+2024-12-04 11:14:25			Personal details were updated.
+2024-12-04 11:12:10			Order of id 1001 was updated.
+2024-12-04 11:09:37			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-29 16:20:08			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-29 16:17:53			Low stock alert was given.
+2024-11-29 16:17:52			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-06-16 15:14:16			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-06-16 16:51:09			Staff with Id : 1013 and name : TALHA KHAN - SECURITY GUARD logged in successfully.
+2024-06-16 16:51:47			Staff with Id : 1007 and name : SARAH LEE - STAFF SUPERVISOR logged in successfully.
+2024-06-16 16:51:53			Personal details were updated.
+2024-06-21 16:33:33			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-07-11 23:10:08			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-12 00:00:01			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-12 00:00:02			Low stock alert was given.
+2024-07-12 00:00:25			Item APPLE IPHONE 13 restocked.
+2024-07-12 00:17:06			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-12 00:17:07			Low stock alert was given.
+2024-07-12 00:17:13			Item APPLE IPHONE 13 restocked.
+2024-07-12 00:23:15			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-12 00:29:22			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-12 00:31:42			New item SAMSUNG S24 was added to the inventory.
+2024-07-12 00:32:26			Item NOTHING was removed from the inventory.
+2024-07-12 00:33:48			Item SAMSUNG S24 details's were updated.
+2024-07-13 00:42:16			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-13 00:56:27			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-13 01:24:38			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-07-13 01:25:33			Order of id 1004 was marked completed.
+2024-07-13 01:33:38			Failed attempt to log in recorded.
+2024-07-13 01:34:35			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-07-13 01:37:28			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-07-13 01:40:31			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-07-13 01:41:19			Staff with Id : 1005 and name : FAISAL IQBAL - SHIPPING CLERK logged in successfully.
+2024-07-13 01:42:04			Staff with Id : 1007 and name : SARAH LEE - STAFF SUPERVISOR logged in successfully.
+2024-07-13 01:43:02			Staff with Id : 1010 and name : DAVID KIM - OPERATOR logged in successfully.
+2024-11-23 12:05:02			Failed attempt to log in recorded.
+2024-11-23 12:05:12			Failed attempt to log in recorded.
+2024-11-23 12:10:54			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-23 12:15:13			Personal details were updated.
+2024-11-23 12:30:54			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-23 12:32:34			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-11-23 12:49:04			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-23 12:51:13			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-11-23 12:54:46			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-23 12:55:28			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-11-23 12:56:08			Personal details were updated.
+2024-11-23 12:58:34			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-23 12:59:36			Staff with Id : 1002 and name : AYESHA KHAN - INVENTORY CLERK logged in successfully.
+2024-11-23 13:00:29			Failed attempt to log in recorded.
+2024-11-23 13:00:51			Failed attempt to log in recorded.
+2024-11-23 13:01:21			Staff with Id : 1004 and name : SARAH GARCIA - STAFF SUPERVISOR logged in successfully.
+2024-11-23 13:02:05			Failed attempt to log in recorded.
+2024-11-23 13:02:31			Staff with Id : 1005 and name : FAISAL IQBAL - SHIPPING CLERK logged in successfully.
+2024-11-23 13:14:09			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-23 13:14:52			Failed attempt to log in recorded.
+2024-11-23 13:15:19			Staff with Id : 1005 and name : FAISAL IQBAL - SHIPPING CLERK logged in successfully.
+2024-11-23 13:15:47			Staff with Id : 1006 and name : OMAR FAROOQ - INVENTORY CLERK logged in successfully.
+2024-11-23 13:16:28			Staff with Id : 1007 and name : SARAH LEE - STAFF SUPERVISOR logged in successfully.
+2024-11-23 13:17:07			Staff with Id : 1001 and name : USMAN ALI - MANAGER logged in successfully.
+2024-11-27 15:39:36			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-27 15:46:34			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-27 15:59:19			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-27 16:00:07			New item NOKIA 3310 was added to the inventory.
+2024-11-27 16:00:31			Item NOTHING was removed from the inventory.
+2024-11-27 16:19:30			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-28 23:05:36			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-28 23:11:35			Item IKEA WORKING TABLE details's were updated.
+2024-11-28 23:12:08			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-28 23:12:09			Low stock alert was given.
+2024-11-28 23:13:04			Personal details were updated.
+2024-11-28 23:14:15			Staff of id 13 was added to the list.
+2024-11-28 23:14:38			Staff of id DAD was removed from the list.
+2024-11-29 16:22:31			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-11-29 16:23:52			New item TEST ITEM was added to the inventory.
+2024-12-05 11:45:04			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+2024-12-05 18:39:54			Staff with Id : 1000 and name : ASAD TAUQEER - MANAGER logged in successfully.
+=======
 2024-12-08 14:16:15			Order of id 1000 was removed from the list.
 2024-12-08 14:16:04			Order of id 101 was removed from the list.
 2024-12-08 14:15:48			New Order of id 101 was added to the list.
