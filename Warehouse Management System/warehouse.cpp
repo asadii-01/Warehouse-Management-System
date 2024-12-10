@@ -71,15 +71,15 @@ void Warehouse::fullfillOrder(int orderId) {
             if (orderId == Orders[i].getOrderId()) {
                 orderFound = true;
 
-                //for (auto& it : Orders[i].getItemsFromOrder()) {
-                //    StockItem* stock = Inventory.findStockByName(it.first);
-                //    if (stock->getQuantity() < it.second) {
-                //        throw runtime_error("Low on Stock !!!\nUpdate Stock !!!");
-                //    }
-                //    else if (stock->getQuantity() >= it.second) {
-                //        stock->removeQuantity(it.second);
-                //    }
-                //}
+                for (auto& it : Orders[i].getItemsFromOrder()) {
+                    StockItem* stock = Inventory.findStockByName(it.first);
+                    if (stock->getQuantity() < it.second) {
+                        throw runtime_error("Low on Stock !!!\nUpdate Stock !!!");
+                    }
+                    else if (stock->getQuantity() >= it.second) {
+                        stock->removeQuantity(it.second);
+                    }
+                }
                 cout << "\n\n\t\033[32mItems dispatched!!\t\tOrder Completed Successfully!!\033[0m";
                 report.logActivity("Order of id " + to_string(orderId) + " was marked completed.");
                 Orders.removeFromList(to_string(orderId));
@@ -497,7 +497,7 @@ void Warehouse::orderMenu() {
 
             case 4:
                 cout << "\n\n\t\tEnter id of the order to be removed : ";
-                id = getNumberFromUser(5);
+                id = getNumberFromUser(4);
 
                 if (Orders.idExists(id)) {
                     Orders.removeFromList(to_string(id));
