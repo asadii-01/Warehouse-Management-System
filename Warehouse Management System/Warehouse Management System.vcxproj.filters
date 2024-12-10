@@ -66,6 +66,9 @@
     <ClCompile Include="Queue.cpp">
       <Filter>Source Files\Base Classes</Filter>
     </ClCompile>
+    <ClCompile Include="doublylinkedlist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="warehouse.h">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="Queue.h">
       <Filter>Header Files\Base Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="doublylinkedlist.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

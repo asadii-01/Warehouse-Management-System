@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="doublylinkedlist.cpp" />
     <ClCompile Include="itemCollection.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main.cpp" />
@@ -143,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="collection.h" />
+    <ClInclude Include="doublylinkedlist.h" />
     <ClInclude Include="itemCollection.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="orderCollection.h" />
