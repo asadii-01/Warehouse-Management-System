@@ -2,10 +2,12 @@
 
 #include "staff.h"
 #include "collection.h"
+#include "doublylinkedlist.h"
 
 class StaffCollection : public Staff, public Collection {
 private: 
-	vector<Staff*> staffList;
+	//vector<Staff*> staffList;
+	DoublyLinkedList staffList;
 
 public:
 

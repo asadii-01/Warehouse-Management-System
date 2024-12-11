@@ -233,7 +233,7 @@ void Warehouse::logInPage(bool& bLI, int& lID, bool& exit) {
 
             if (!staffFound) {
                 report.logActivity("Failed attempt to log in recorded.");
-                throw runtime_error("Mail not found !!!\n\t\tPlease enter a valid username.");
+                throw runtime_error("Mail not found !!!\n\t\tPlease enter a valid email.");
             }
 
             break;
@@ -481,7 +481,13 @@ void Warehouse::orderMenu() {
                 break;
 
             case 3:
-                cin >> order;
+                //cin >> order;
+
+                cout << "\n\n\t\tEnter Order ID: ";
+                order->setOrderId(getNumberFromUser(4));
+
+                order->addItems(Inventory);
+
                 if (Orders.orderExists(*order)) {
                     throw runtime_error("Order with this id already exists !!\t try different id !!");
                 }
@@ -524,6 +530,7 @@ void Warehouse::orderMenu() {
             }
         }
         catch (exception& e) {
+            order = NULL;
             cerr << "\n\n\t\033[31mError: " << e.what() << "\033[0m" << endl;
             Pause();
         }
@@ -543,11 +550,12 @@ void Warehouse::staffMenu() {
 
         cout << "\n\n\t\t01. ADD NEW STAFF MEMBER";
         cout << "\n\n\t\t02. REMOVE A STAFF MEMBER";
-        cout << "\n\n\t\t03. MODIFY A STAFF MEMBER'S DETAILS";
-        cout << "\n\n\t\t04. DISPLAY ALL STAFF MEMBERS";
-        cout << "\n\n\t\t05. GO BACK TO MAIN MENU";
-        cout << "\n\n\t\t\033[33mChoose what you want to do (1-5) : \033[0m";
-        choice = getChoiceFromUser(5);
+        cout << "\n\n\t\t03. FIND STAFF BY ID";
+        cout << "\n\n\t\t04. MODIFY A STAFF MEMBER'S DETAILS";
+        cout << "\n\n\t\t05. DISPLAY ALL STAFF MEMBERS";
+        cout << "\n\n\t\t06. GO BACK TO MAIN MENU";
+        cout << "\n\n\t\t\033[33mChoose what you want to do (1-6) : \033[0m";
+        choice = getChoiceFromUser(6);
 
         try {
             switch (choice) {
@@ -606,6 +614,33 @@ void Warehouse::staffMenu() {
                 cout << "\t\t\t\t\t\033[34m:: STAFF MANAGMENT ::\033[0m\n\t\t\t\t\t";
                 DrawBlueLine(21, '-');
 
+                cout << "\n\n\t\tEnter ID of the Staff Member : ";
+                input = getStringFromUser(5);
+
+                if (!Employees.idExists(stoi(input))) {
+                    throw invalid_argument("Staff for this id not found !!!");
+                    break;
+                }
+
+                staff = Employees.findStaffById(stoi(input));
+
+                cout << "\n\t\t\t\t\t\033[32m----STAFF DETAILS----\033[0m\n\n";
+                cout << "\t\t\033[32m" << setw(8) << left << "Staff Id";
+                cout << "\t\t" << setw(17) << left << "Name";
+                cout << "\t\t" << setw(17) << left << "Role";
+                cout << "\t\t" << setw(25) << left << "E-mail\033[0m" << endl;
+                cout << staff << endl;
+                
+                Pause();
+                staff = NULL;
+                break;
+
+
+            case 4:
+                LoadingScreen("Loading");
+                cout << "\t\t\t\t\t\033[34m:: STAFF MANAGMENT ::\033[0m\n\t\t\t\t\t";
+                DrawBlueLine(21, '-');
+
                 cout << "\n\n\t\tEnter Name of the Staff Member to be modified : ";
                 input = getStringFromUser(20);
 
@@ -639,14 +674,14 @@ void Warehouse::staffMenu() {
                 staff = NULL;
                 break;
 
-            case 4:
+            case 5:
                 LoadingScreen("Loading");
                 Employees.displayList();
 
                 Pause();
                 break;
 
-            case 5:
+            case 6:
                 //Employees.saveToFile("staff.txt");
                 delete staff;
                 staff = NULL;

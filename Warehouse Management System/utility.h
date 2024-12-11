@@ -337,7 +337,7 @@ static istream& operator>>(istream& cin, Order* o) {
     cout << "\n\n\t\tEnter Order ID: ";
     o->orderId = getNumberFromUser(4);
 
-    o->addItems();
+    //o->addItems();
 
     return cin;
 }

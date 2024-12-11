@@ -1,5 +1,5 @@
 staffId,staffName,role,email,pin
-1000,ASAD TAUQEER,1,asad.t@gmail.com,3036
+1000,ASAD TAUQEER,1,asad.tq@gmail.com,3036
 1001,USMAN ALI,1,m.usman@uog.edu.com,1111
 1002,AYESHA KHAN,2,ayeshakhan@example.com,5557
 1003,MICHEAL LEE,5,michael.lee@warehouse.com,1545

@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include "itemCollection.h"
 
 using namespace std;
 
@@ -32,7 +33,9 @@ public:
 	// Setters
 	void addItemToOrder(string stock, int qunatity);
 
-	void addItems();
+	void setOrderId(int id);
+
+	void addItems(ItemCollection& inventory);
 
 	void removeItemFromOrder(string item);
 

@@ -2,27 +2,32 @@
 #include "utility.h"
 
 vector<Staff*> StaffCollection::getStaffList() {
-    return staffList;
+    return staffList.getList();
 }
 
 void StaffCollection::addToList(Staff& s) {
     Staff* st = new Staff(s.getID(), s.getName(), s.getRole(), s.getContactInfo(), s.getPin());
-    staffList.push_back(st);
+   // staffList.push_back(st);
+    staffList.addToTail(st);
+    staffList.bubbleSortByID();
 }
 
 void StaffCollection::removeFromList(string name){
-    bool staffFound = false;
+    //bool staffFound = false;
 
-    for (int i = 0; i <= staffList.size(); i++) {
+    /*for (int i = 0; i <= staffList.size(); i++) {
         if (staffList[i]->getName() == name) {
             staffList.erase(staffList.begin() + i);
             staffFound = true;
             break;
         }
-    }
-    if (!staffFound) {
+    }*/
+
+    staffList.removeByName(name);
+
+    /*if (!staffFound) {
         throw runtime_error("Staff with name " + name + " not found !!!");
-    }
+    }*/
 }
 
 void StaffCollection::modifyDetails(string name){
@@ -228,11 +233,12 @@ Staff* StaffCollection::findStaffByName(string name){
             throw runtime_error("Staff with name " + name + " not found !!!");
         }
         else {
-            for (auto& s : staffList) {
+            /*for (auto& s : staffList) {
                 if (s->getName() == name) {
                     return s;
                 }
-            }
+            }*/
+            return staffList.findByName(name);
         }
     }
     catch (exception& e) {
@@ -248,11 +254,12 @@ Staff* StaffCollection::findStaffById(int id){
             throw runtime_error("Staff with name " + to_string(id) + " not found !!!");
         }
         else {
-            for (auto& s : staffList) {
+            /*for (auto& s : staffList) {
                 if (s->getID() == id) {
                     return s;
                 }
-            }
+            }*/
+            return staffList.findByID(id);
         }
     }
     catch (exception& e) {
@@ -271,37 +278,52 @@ void StaffCollection::newLogIn(Staff* s) {
 }
 
 bool StaffCollection::staffExists(Staff& st) {
-    for (auto& s : staffList) {
+    /*for (auto& s : staffList) {
         if (s->getName() == st.getName()) {
             return true;
         }
         else if (s->getID() == st.getID()) {
             return true;
         }
+    }*/
+    
+    if (nameExists(st.getName()) || idExists(st.getID())) {
+        return true;
     }
+
     return false;
 }
 
 bool StaffCollection::idExists(int id) {
-    for (auto& s : staffList) {
+    /*for (auto& s : staffList) {
         if (s->getID() == id) {
             return true;
         }
+    }*/
+
+    if (staffList.idExists(id)) {
+        return true;
     }
+
     return false;
 }
 
 bool StaffCollection::nameExists(string name){
-    for (auto& s : staffList) {
+    /*for (auto& s : staffList) {
         if (s->getName() == name) {
             return true;
         }
+    }*/
+
+    if (staffList.nameExists(name)) {
+        return true;
     }
+
     return false;
 }
 
 bool StaffCollection::mailExists(string mail){
-    for (auto& s : staffList) {
+    for (auto& s : getStaffList()) {
         if (s->getContactInfo() == mail) {
             return true;
         }
@@ -357,11 +379,11 @@ void StaffCollection::saveToFile(string filename) {
 
         Writer << "staffId,staffName,role,email,pin\n";
 
-        for (const auto& s : staffList) {
+        for (const auto& s : getStaffList()) {
             s->Staff::WriteToFile(Writer);
             delete s;
         }
-        staffList.clear();
+        //staffList.clear();
 
         Writer.close();
     }
@@ -385,7 +407,9 @@ void StaffCollection::displayList() {
     DrawBlueLine(130, '=');
     cout << endl;
     
-    for (auto& s : staffList) {
+    /*for (auto& s : staffList) {
         cout << s << endl;
-    }
+    }*/
+
+    staffList.display();
 }

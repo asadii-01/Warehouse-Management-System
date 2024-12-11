@@ -29,13 +29,22 @@ void Order::addItemToOrder(string stock, int quantity) {
 	items.push_back(make_pair(stock, quantity));
 }
 
-void Order::addItems(){
+void Order::setOrderId(int id)
+{
+	this->orderId = id;
+}
+
+void Order::addItems(ItemCollection& inventory){
 	string input;
 	int quantity;
 	do
 	{
 		cout << "\n\n\t\tEnter Name of the item ordered : ";
 		input = getStringFromUser(20);
+
+		if (!inventory.nameExists(input)) {
+			throw runtime_error("Item does not exists in the invetory!!\t Enter correct item name");
+		}
 
 		cout << "\n\n\t\tEnter Quantity of item ordered : ";
 		quantity = getNumberFromUser(5);

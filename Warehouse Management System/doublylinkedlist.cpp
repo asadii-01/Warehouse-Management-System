@@ -1,16 +1,18 @@
 #include "doublylinkedlist.h"
-using namespace std;
+#include "utility.h"
 
 DoublyLinkedList::DoublyLinkedList() : head(nullptr), tail(nullptr) {}
 
 DoublyLinkedList::~DoublyLinkedList() {
-    Node* current = head;
+    /*Node* current = head;
     while (current) {
         Node* toDelete = current;
         current = current->adrs;
         delete toDelete->data;
         delete toDelete;
-    }
+    }*/
+    head = nullptr;
+    tail = nullptr;
 }
 
 void DoublyLinkedList::addToTail(Staff* s) {
@@ -45,9 +47,7 @@ void DoublyLinkedList::removeByName(const string& name) {
 void DoublyLinkedList::display() const {
     Node* current = head;
     while (current) {
-        cout << "ID: " << current->data->getID()
-            << ", Name: " << current->data->getName()
-            << ", Email: " << current->data->getContactInfo() << endl;
+        cout << current->data << endl;
         current = current->adrs;
     }
 }
@@ -86,6 +86,18 @@ void DoublyLinkedList::bubbleSortByName() {
     } while (swapped);
 }
 
+vector<Staff*> DoublyLinkedList::getList()
+{
+    vector<Staff*> list;
+    Node* current = head;
+    while (current) {
+        list.push_back(current->data);
+        current = current->adrs;
+    }
+
+    return list;
+}
+
 Staff* DoublyLinkedList::findByName(const string& name) {
     Node* current = head;
     while (current) {
@@ -97,13 +109,78 @@ Staff* DoublyLinkedList::findByName(const string& name) {
     throw runtime_error("Staff with name " + name + " not found!");
 }
 
+
+
 Staff* DoublyLinkedList::findByID(int id) {
-    Node* current = head;
+    /*Node* current = head;
     while (current) {
         if (current->data->getID() == id) {
             return current->data;
         }
         current = current->adrs;
     }
+    throw runtime_error("Staff with ID " + to_string(id) + " not found!");*/
+
+    if (head == nullptr) return nullptr;
+
+    Node* start = head;
+    Node* end = nullptr;
+
+    while (start != end) {
+        Node* mid = getMiddle(start, end);
+
+        if (mid == nullptr)
+        {
+            throw runtime_error("Staff with ID " + to_string(id) + " not found!");
+        }
+
+        if (mid->data->getID() == id) {
+            return mid->data;
+        }
+        else if (mid->data->getID() < id) {
+            start = mid->adrs;
+        }
+        else {
+            end = mid;
+        }
+    }
     throw runtime_error("Staff with ID " + to_string(id) + " not found!");
+}
+
+bool DoublyLinkedList::idExists(int id)
+{
+    Node* current = head;
+    while (current) {
+        if (current->data->getID() == id) {
+            return true;
+        }
+        current = current->adrs;
+    }
+    return false;
+}
+
+DoublyLinkedList::Node* DoublyLinkedList::getMiddle(Node* start, Node* end)
+{
+    if (start == nullptr) return nullptr;
+
+    Node* slow = start;
+    Node* fast = start;
+
+    while (fast != end && fast->adrs != end) {
+        fast = fast->adrs->adrs;
+        slow = slow->adrs;
+    }
+    return slow;
+}
+
+bool DoublyLinkedList::nameExists(const std::string& name)
+{
+    Node* current = head;
+    while (current) {
+        if (current->data->getName() == name) {
+            return true;
+        }
+        current = current->adrs;
+    }
+    return false;
 }
