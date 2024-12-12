@@ -216,9 +216,9 @@ static void Intro() {
     cout << "\n\t\t\t    \033[34m" << char(186) << string(53, ' ') << char(186) << "\033[0m";
     cout << "\n\t\t\t    \033[34m" << char(186) << "\033[33m" << string(16, ' ') << setw(12) << internal << "SYSTEM" << string(25, ' ') << "\033[34m" << char(186) << "\033[0m";
     cout << "\n\t\t\t    \033[34m"<<char(186) << string(53, ' ') << char(186) << "\n\t\t\t    "<< char(186) << string(53, ' ') << char(186) << "\n\t\t\t    "<<char(186) << string(53, ' ') << char(186)<<"\033[0m";
-    cout << "\n\t\t\t    \033[34m" << char(186) << "\033[0m" << string(15, ' ') << "MADE BY : Asad Tauqeer" << string(16, ' ') << "\033[34m" << char(186) << "\033[0m";
+    cout << "\n\t\t\t    \033[34m" << char(186) << "\033[0m" << string(9, ' ') << "MADE BY : Asad Tauqeer & Asim Raza" << string(10, ' ') << "\033[34m" << char(186) << "\033[0m";
     cout << "\n\t\t\t    \033[34m" << char(186) << string(53, ' ') << char(186) << "\033[0m";
-    cout << "\n\t\t\t    \033[34m" << char(186) << "\033[0m" << string(15, ' ') << "ROLL NO. : 23021519-160" << string(15, ' ') << "\033[34m" << char(186) << "\033[0m";
+    cout << "\n\t\t\t    \033[34m" << char(186) << "\033[0m" << string(8, ' ') << "ROLL NO. : 23021519-160 & 23021519-135" << string(7, ' ') << "\033[34m" << char(186) << "\033[0m";
     cout << "\n\t\t\t    \033[34m" << char(186) << string(53, ' ') << char(186) << "\n\t\t\t    " << char(186) << string(53, ' ') << char(186) << "\033[0m";
     cout << "\n\t\t\t    ";
     DrawBlueLine(1, 200);
