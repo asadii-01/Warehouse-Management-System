@@ -63,6 +63,9 @@ void ItemCollection::modifyDetails(string name) {
                         cerr << "\n\t\t\033[31mItem with this name already exists !!\t Try Again with different value.\033[0m";
                     }
                     else {
+                        if (isValidName(newInput)) {
+                            throw invalid_argument("Item with such name cannot be made !!\t Try Again with different values.");
+                        }
                         item->setName(newInput);
                         cout << "\n\t\033[32mName updated!!\033[0m";
                         break;
@@ -73,6 +76,9 @@ void ItemCollection::modifyDetails(string name) {
             case 2:
                 cout << "\n\n\t\tEnter new price : ";
                 newPrice = getfloatFromUser(6);
+                if (newPrice == 0) {
+                    throw invalid_argument("Item with price 0 Rs cannot be made !!\t Try Again with different values.");
+                }
                 item->setPrice(newPrice);
                 cout << "\n\t\033[32mPrice updated!!\033[0m";
                 break;
@@ -80,6 +86,9 @@ void ItemCollection::modifyDetails(string name) {
             case 3:
                 cout << "\n\n\t\tEnter amount of stock being added : ";
                 newInt = getNumberFromUser(10);
+                if (newInt == 0) {
+                    throw invalid_argument("Item with quantity 0 cannot be made !!\t Try Again with different values.");
+                }
                 item->addQuantity(newInt);
                 cout << "\n\t\033[32mStock updated!!\033[0m";
                 break;
@@ -373,4 +382,42 @@ void ItemCollection::displayList() {
             Pause();
         }
     } while (true);
+}
+
+void ItemCollection::displayMenu() {
+
+    cout << "\n\n\tCategories: ";
+    cout << "\n\n\t\t01. ELECTRONICS";
+    cout << "\n\n\t\t02. COMPUTER";
+    cout << "\n\n\t\t03. AUTOMOTIVE";
+    cout << "\n\n\t\t04. SPORTS";
+    cout << "\n\n\t\t05. CLOTHING";
+    cout << "\n\n\t\t06. FURNITURE";
+    cout << "\n\n\t\t\033[33mChoose what you want to do (1-6) : \033[0m";
+    int choice = getChoiceFromUser(6);
+
+
+    try {
+        system("cls");
+        cout << "\t\t\t\t\t\t\t\033[34m---INVENTORY---\033[0m\n\t\t\t\t\t\t\t";
+        DrawBlueLine(15, '-');
+        cout << endl << endl << "\t";
+
+        DrawBlueLine(140, '=');
+        cout << endl;
+        cout << "\n\t\t\033[34m" << setw(8) << left << "Stock Id";
+        cout << "\t\t" << setw(20) << left << "Name";
+        cout << "\t\t" << setw(8) << left << "Price";
+        cout << "\t\t" << setw(20) << left << "Category";
+        cout << "\t\t" << setw(8) << left << "Quantity\033[0m" << endl << "\t";
+        DrawBlueLine(140, '=');
+        cout << endl;
+
+        itemList.display(choice);
+
+    }
+    catch (exception& e) {
+        cerr << "\n\n\t\033[31mError: " << e.what() << "\033[0m" << endl;
+        Pause();
+    }
 }

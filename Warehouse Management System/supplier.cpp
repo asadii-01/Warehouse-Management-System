@@ -1,4 +1,5 @@
 #include "supplier.h"
+#include "utility.h"
 
 Supplier::Supplier()
     :Person(0, "NOBODY", "NOTHING"), itemsSupplied({}) {}
@@ -17,6 +18,37 @@ vector<string> Supplier::getItemsSupplied() {
 
 void Supplier::addItem(string item) {
     itemsSupplied.push_back(item);
+}
+
+void Supplier::addItem(ItemCollection& inventory)
+{
+    string input;
+    int quantity;
+    do
+    {
+        cout << "\n\n\t\tEnter Name of the item ordered : ";
+        input = getStringFromUser(20);
+
+        if (!inventory.nameExists(input)) {
+            throw runtime_error("Item does not exists in the invetory!!\t Enter correct item name");
+        }
+
+        addItem(input);
+
+        cout << "\n\n\t\t\033[33mWant to add another item to the order? <Y/N> : \033[0m ";
+        input = getStringFromUser(1);
+
+        if (input == "N") {
+            break;
+        }
+        else if (input == "Y") {
+            continue;
+        }
+        else {
+            cerr << "\033[31mInvalid choice !! choose between Y or N\033[0m";
+        }
+
+    } while (true);
 }
 
 bool Supplier::removeItem(string item) {

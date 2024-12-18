@@ -55,6 +55,9 @@ void StaffCollection::modifyDetails(string name){
                     if (nameExists(newInput)) {
                         cerr << "\n\t\033[31mStaff with this name already exists !!\t Try Again with different value.\033[0m";
                     }
+                    else if (!isValidName(newInput)) {
+                        throw invalid_argument("staff with such name cannot be made !!\t Try Again with different values.");
+                    }
                     else {
                         staff->setName(newInput);
                         cout << "\n\t\033[32mName updated!!\033[0m";
@@ -128,6 +131,9 @@ void StaffCollection::modifyPersonalDetails(string name){
                     if (nameExists(newInput)) {
                         cerr << "\n\t\033[31mThis name already exists !!\t Try Again with different name.\033[0m";
                     }
+                    else if (!isValidName(newInput)) {
+                        throw invalid_argument("staff with such name cannot be made !!\t Try Again with different values.");
+                    }
                     else {
                         staff->setName(newInput);
                         cout << "\n\t\033[32m Name updated!!\033[0m";
@@ -155,6 +161,9 @@ void StaffCollection::modifyPersonalDetails(string name){
                 cin >> newInput;
                 if (mailExists(newInput)) {
                     cerr << "\n\t\033[31mThis mail already exists !!\t Try Again with different mail.\033[0m";
+                }
+                else if (!isValidEmail(newInput)) {
+                    throw invalid_argument("\n\t\033[31mThis mail is invalid !!\t Try Again with different mail.\033[0m");
                 }
                 else {
                     staff->setContactInfo(newInput);

@@ -4,6 +4,9 @@
 #include <windows.h>
 #include <conio.h>
 #include <iomanip>
+#include <cctype>
+#include <algorithm>
+#include <string>
 #include <regex>
 
 // Input functions
@@ -160,9 +163,33 @@ static string getStringFromUser(int len) {
     return str;
 }
 
+// Functions to check Validation
 static bool isValidEmail(const string& email) {
     const regex pattern(R"((\w+)(\.|_)?(\w*)@(\w+)(\.(\w+))+)");
     return regex_match(email, pattern);
+}
+static bool isValidName(const string& name) {
+    if (std::all_of(name.begin(), name.end(), ::isdigit)) {
+        return false;
+    }
+    return true;
+}
+
+// Function to create a pop-up notification
+static bool ShowNotification(const wchar_t* title, const wchar_t* message) {
+    int response = MessageBox(
+        NULL,           // No owner window
+        message,        // Message to display
+        title,          // Title of the notification
+        MB_YESNO | MB_ICONWARNING// Buttons and icon style
+    );
+
+    if (response == IDYES) {
+        return true;
+    }
+    else if (response == IDNO) {
+        return false;
+    }
 }
 
 // Functions to draw lines
@@ -266,12 +293,32 @@ static istream& operator>>(istream& cin, StockItem* s) {
 
     cout << "\n\n\t\tEnter Stock ID: ";
     s->stockId = getNumberFromUser(4);
+
+    if (s->stockId == 0) {
+        throw invalid_argument("Item with id number 0 cannot be made !!\t Try Again with different values.");
+    }
+
     cout << "\n\n\t\tEnter Name of Item: ";
     s->name = getStringFromUser(20);
+
+    if (!isValidName(s->name)) {
+        throw invalid_argument("Item with such name cannot be made !!\t Try Again with different values.");
+    }
+
     cout << "\n\n\t\tEnter Price: ";
     s->price = getfloatFromUser(6);
+
+    if (s->price == 0) {
+        throw invalid_argument("Item with price 0 Rs cannot be made !!\t Try Again with different values.");
+    }
+
     cout << "\n\n\t\tEnter Quantity: ";
     s->quantity = getNumberFromUser(5);
+
+    if (s->quantity == 0) {
+        throw invalid_argument("Item with quantity 0 cannot be made !!\t Try Again with different values.");
+    }
+
     cout << "\n\n\t\tCategories are : ELECTRONICS, COMPUTER, AUTOMOTIVE, SPORTS, CLOTHING, FURNITURE";
     int count = 0;
     while (count != 3) {
@@ -316,8 +363,18 @@ static istream& operator>>(istream& cin, Staff* s) {
 
     cout << "\n\n\t\tEnter Staff ID : ";
     s->ID = getNumberFromUser(4);
+
+    if (s->ID == 0) {
+        throw invalid_argument("Staff id cannot be zero !!\t Try Again with different values.");
+    }
+
     cout << "\n\n\t\tEnter Name : ";
     s->name = getStringFromUser(20);
+
+    if (!isValidName(s->name)) {
+        throw invalid_argument("staff with such name cannot be made !!\t Try Again with different values.");
+    }
+
     cout << "\n\n\t\tEnter Email: ";
     cin >> s->contactInfo;
     
@@ -325,7 +382,8 @@ static istream& operator>>(istream& cin, Staff* s) {
         throw invalid_argument("Invalid Email!!");
     }
     
-    cout << "\n\n\t\tEnter Role: ";
+    cout << "\n\n\t\tRoles are: MANAGER, INVENTORY_CLERK, SHIPPING_CLERK, STAFF_SUPERVISOR, OPERATOR, SECURITY_GAURD";
+    cout << "\n\t\tEnter Role: ";
     s->role = s->stringToRole(getStringFromUser(20));
     s->pin = 0;
 
@@ -379,16 +437,32 @@ static istream& operator>>(istream& cin, Supplier* s) {
 
     cout << "\n\n\t\tEnter Supplier ID : ";
     s->ID = getNumberFromUser(4);
+
+    if (s->ID == 0) {
+        throw invalid_argument("Invalid id!!");
+    }
     cout << "\n\n\t\tEnter Name : ";
     s->name = getStringFromUser(20);
+
+    if (!isValidName(s->name)) {
+        throw invalid_argument("Invalid name!!");
+    }
     cout << "\n\n\t\tEnter Email: ";
     cin >> s->contactInfo;
 
-    string input;
+    if (!isValidEmail(s->contactInfo)) {
+        throw invalid_argument("Invalid Email!!");
+    }
+
+    /*string input;
     do
     {
         cout << "\n\n\t\tEnter Name of the item : ";
         input = getStringFromUser(20);
+
+        if (!isValidName(input)) {
+            throw invalid_argument("Invalid item name!!");
+        }
 
         s->addItem(input);
 
@@ -405,7 +479,7 @@ static istream& operator>>(istream& cin, Supplier* s) {
             cerr << "\033[31mInvalid choice !! choose between Y or N\033[0m";
         }
 
-    } while (true);
+    } while (true);*/
 
     return cin;
 }

@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include "itemCollection.h"
 
 
 class Supplier : public Person {
@@ -27,6 +28,7 @@ public:
     // Setters
     // Add an item to the list of supplied items
     void addItem(string item);
+    void addItem(ItemCollection& inventory);
     // Remove an item from the list of supplied items
     bool removeItem(string item);
 

@@ -8,6 +8,7 @@ vector<Supplier*> SupplierCollection::getSupplierList() {
 void SupplierCollection::addToList(Supplier& s) {
     Supplier* supplier = new Supplier(s.getID(), s.getName(), s.getContactInfo(), s.getItemsSupplied());
     supplierList.push_back(supplier);
+    this->sortItems();
 }
 
 void SupplierCollection::removeFromList(string name){
@@ -54,6 +55,9 @@ void SupplierCollection::modifyDetails(string name){
                         if (nameExists(newInput)) {
                             throw invalid_argument("Supplier with this name already exists !!\t Try Again with different value.");
                         }
+                        else if (!isValidName(newInput)) {
+                            throw invalid_argument("Supplier cannot have such name !!\t Try Again with different value.");
+                        }
                         else {
                             supplier->setName(newInput);
                             cout << "\n\t\033[32mName updated!!\033[0m";
@@ -70,6 +74,9 @@ void SupplierCollection::modifyDetails(string name){
             case 2:
                 cout << "\n\n\t\tEnter new email : ";
                 cin >> newInput;
+                if (!isValidEmail(newInput)) {
+                    throw invalid_argument("Invalid Email !!\t Try Again with different value.");
+                }
                 supplier->setContactInfo(newInput);
                 cout << "\n\t\033[32mContact Info updated!!\033[0m";
                 break;
@@ -77,6 +84,9 @@ void SupplierCollection::modifyDetails(string name){
             case 3:
                 cout << "\n\n\t\tEnter name of the new item : ";
                 newInput = getStringFromUser(20);
+                if (!isValidName(newInput)) {
+                    throw invalid_argument("Invalid item name !!\t Try Again with different value.");
+                }
                 supplier->addItem(newInput);
                 cout << "\n\t\033[32mNew item added!!\033[0m";
                 break;
@@ -105,6 +115,63 @@ void SupplierCollection::modifyDetails(string name){
             Pause();
         }
     }
+}
+
+
+void SupplierCollection::merge(vector<Supplier*>& arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    vector<Supplier*> leftArr(n1);
+    vector<Supplier*> rightArr(n2);
+
+    for (int i = 0; i < n1; ++i)
+        leftArr[i] = arr[left + i];
+    for (int j = 0; j < n2; ++j)
+        rightArr[j] = arr[mid + 1 + j];
+
+    int i = 0, j = 0, k = left;
+
+    while (i < n1 && j < n2) {
+        if (leftArr[i]->getID() <= rightArr[j]->getID()) {
+            arr[k] = leftArr[i];
+            i++;
+        }
+        else {
+            arr[k] = rightArr[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = leftArr[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = rightArr[j];
+        j++;
+        k++;
+    }
+}
+
+void SupplierCollection::mergeSort(vector<Supplier*>& arr, int left, int right) {
+    if (left >= right)
+        return;
+
+    int mid = left + (right - left) / 2;
+
+    mergeSort(arr, left, mid);
+    mergeSort(arr, mid + 1, right);
+
+    merge(arr, left, mid, right);
+}
+
+void SupplierCollection::sortItems() {
+    if (!supplierList.empty())
+        mergeSort(supplierList, 0, supplierList.size() - 1);
 }
 
 Supplier* SupplierCollection::findSupplierByName(string name) {

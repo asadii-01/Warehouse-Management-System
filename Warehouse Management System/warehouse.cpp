@@ -136,10 +136,10 @@ void Warehouse::notification() {
 
         report.logActivity("Low stock alert was given.");
         while (true) {
-            cout << "\n\n\t\t\033[33mDo you want to restock the items? <Y/N> : \033[0m";
-            string choice = getStringFromUser(1);
+            /*cout << "\n\n\t\t\033[33mDo you want to restock the items? <Y/N> : \033[0m";
+            string choice = getStringFromUser(1);*/
 
-            if (choice == "Y") {
+            if (ShowNotification(L"Low Stock ALert", L"Your Stock Levels are low\nDo you want to restock the items?")) {
                 for (auto& i : stock) {
                     cout << "\n\n\t\tEnter quantity to add for item " << i->getName() << " : ";
                     quantity = getNumberFromUser(8);
@@ -149,17 +149,14 @@ void Warehouse::notification() {
                 lowStock = true;
                 break;
             }
-            else if (choice == "N") {
+            else {
                 cout << "\n\n\t\t\033[33mKeep in mind to restock as soon as possible.\033[0m";
                 report.logActivity("Inventory was not restocked.");
+                Pause();
                 break;
             }
-            else {
-                cerr << "\n\n\t\033[31mInvalid choice !! choose between Y or N\033[0m";
-            }
         }
-
-        Pause();
+        
     }
 
 }
@@ -254,6 +251,9 @@ void Warehouse::logInPage(bool& bLI, int& lID, bool& exit) {
 
 void Warehouse::inventoryMenu() {
     int choice = 0;
+    int tries = 3;
+    int ch = 0;
+    int id = 0;
     string input = "";
     while (true) {
         StockItem* item = new StockItem();
@@ -310,88 +310,149 @@ void Warehouse::inventoryMenu() {
                 break;
 
             case 3:
-                system("cls");
-                cout << "\t\t\t\t\t\033[34m:: INVENTORY MANAGMENT ::\033[0m\n\t\t\t\t\t";
-                DrawBlueLine(24, '-');
-                while (true) {
-                    cin >> item;
-                    if (Inventory.itemExists(*item)) {
-                        throw runtime_error("Item with this name or id already exists !!\t Try Again with different values.");
+                while (tries != 0) {
+                    system("cls");
+                    cout << "\t\t\t\t\t\033[34m:: INVENTORY MANAGMENT ::\033[0m\n\t\t\t\t\t";
+                    DrawBlueLine(24, '-');
+                    try {
+                        cin >> item;
+                        if (Inventory.itemExists(*item)) {
+                            throw runtime_error("Item with this name or id already exists !!\t Try Again with different values.");
+                        }
+                        else {
+                            Inventory.addToList(*item);
+                            cout << "\n\n\t\033[32mItem successfully added in the inventory!!\033[0m";
+                            Pause();
+                            break;
+                        }
                     }
-                    else {
-                        Inventory.addToList(*item);
-                        cout << "\n\n\t\033[32mItem successfully added in the inventory!!\033[0m";
-                        break;
+                    catch (exception& e) {
+                        cerr << "\n\n\t\033[31mError: " << e.what() << "\033[0m" << endl;
+                        tries--;
+                        cerr << "\n\t\tTries left are: " << tries;
+                        Pause();
                     }
                 }
 
                 report.logActivity("New item " + item->getName() + " was added to the inventory.");
-                Pause();
 
-                item = NULL;
+                //item = NULL;
+                tries = 3;
                 break;
 
             case 4:
+                Label2:
                 system("cls");
                 cout << "\t\t\t\t\t\033[34m:: INVENTORY MANAGMENT ::\033[0m\n\t\t\t\t\t";
                 DrawBlueLine(24, '-');
 
-                cout << "\n\n\t\tEnter Name of the item to be removed: ";
-                input = getStringFromUser(20);
+                Inventory.displayMenu();
 
-                if (!Inventory.nameExists(input)) {
-                    throw invalid_argument("Item not found !!!");
+                cout << "\n\n\tOPTIONS: ";
+                cout << "\n\n\t\t01. Delete an item";
+                cout << "\n\n\t\t02. Change category";
+                cout << "\n\n\t\t03. Exit";
+                cout << "\n\n\t\t\033[33mChoose what you want to do (1-3) : \033[0m";
+                ch = getChoiceFromUser(3);
+
+                switch (ch) {
+                case 2:
+                    goto Label1;
                     break;
-                }
-                else {
-                    Inventory.removeFromList(input);
-                    cout << "\n\n\t\033[32mItem successfully removed from the inventory!!\033[0m";
+                case 1:
+                    cout << "\n\n\t\tEnter id of the item to be removed: ";
+                    id = getNumberFromUser(4);
 
-                    report.logActivity("Item " + item->getName() + " was removed from the inventory.");
+                    if (!Inventory.idExists(id)) {
+                        throw invalid_argument("Item not found !!!");
+                        break;
+                    }
+                    else {
+                        Inventory.removeFromList(Inventory.findStockById(id)->getName());
+                        cout << "\n\n\t\033[32mItem successfully removed from the inventory!!\033[0m";
+
+                        report.logActivity("Item " + item->getName() + " was removed from the inventory.");
+                        Pause();
+
+                        //item = NULL;
+                        break;
+                    }
+                    break;
+                case 3:
+                    break;
+
+                default:
+                    cerr << "\n\n\t\tinvalid choice !!!";
                     Pause();
-
-                    item = NULL;
-                    break;
+                    goto Label2;
                 }
 
             case 5:
+               Label1:
                 system("cls");
                 cout << "\t\t\t\t\t\033[34m:: INVENTORY MANAGMENT ::\033[0m\n\t\t\t\t\t";
                 DrawBlueLine(24, '-');
 
-                cout << "\n\n\t\tEnter item name to be modified : ";
-                input = getStringFromUser(20);
+                Inventory.displayMenu();
 
-                if (!Inventory.nameExists(input)) {
-                    throw invalid_argument("Item not found !!!");
+                cout << "\n\n\tOPTIONS: ";
+                cout << "\n\n\t\t01. Modify an item";
+                cout << "\n\n\t\t02. Change category";
+                cout << "\n\n\t\t03. Exit";
+                cout << "\n\n\t\t\033[33mChoose what you want to do (1-3) : \033[0m";
+                ch = getChoiceFromUser(3);
+
+                switch (ch) {
+                case 2:
+                    goto Label1;
                     break;
+                case 1:
+                    cout << "\n\n\t\tEnter item id to be modified : ";
+                    id = getNumberFromUser(4);
+
+                    if (!Inventory.idExists(id)) {
+                        throw invalid_argument("Item not found !!!");
+                        break;
+                    }
+
+                    system("cls");
+                    cout << "\t\t\t\t\t\033[34m:: INVENTORY MANAGMENT ::\033[0m\n\t\t\t\t\t";
+                    DrawBlueLine(24, '-');
+
+                    item = Inventory.findStockById(id);
+
+                    cout << "\n\t\t\t\t\t\033[32m----PREVIOUS DETAILS----\033[0m\n\n";
+                    cout << "\t\t\033[32m" << setw(8) << left << "Stock Id";
+                    cout << "\t\t" << setw(20) << left << "Name";
+                    cout << "\t\t" << setw(8) << left << "Price";
+                    cout << "\t\t" << setw(20) << left << "Category";
+                    cout << "\t\t" << setw(8) << left << "Quantity\033[0m" << endl;
+                    cout << item;
+
+                    Inventory.modifyDetails(item->getName());
+
+                    item = Inventory.findStockById(item->getStockId());
+                    cout << "\n\t\t\t\t\t\033[32m----NEW DETAILS----\033[0m\n\n";
+                    cout << "\t\t\033[32m" << setw(8) << left << "Stock Id";
+                    cout << "\t\t" << setw(20) << left << "Name";
+                    cout << "\t\t" << setw(8) << left << "Price";
+                    cout << "\t\t" << setw(20) << left << "Category";
+                    cout << "\t\t" << setw(8) << left << "Quantity\033[0m" << endl;
+                    cout << item;
+
+                    report.logActivity("Item " + item->getName() + " details's were updated.");
+                    Pause();
+                    break;
+                case 3:
+                    break;
+
+                default:
+                    cerr << "\n\n\t\tinvalid choice !!!";
+                    Pause();
+                    goto Label1;
                 }
 
-                item = Inventory.findStockByName(input);
-
-                cout << "\n\t\t\t\t\t\033[32m----PREVIOUS DETAILS----\033[0m\n\n";
-                cout << "\t\t\033[32m" << setw(8) << left << "Stock Id";
-                cout << "\t\t" << setw(20) << left << "Name";
-                cout << "\t\t" << setw(8) << left << "Price";
-                cout << "\t\t" << setw(20) << left << "Category";
-                cout << "\t\t" << setw(8) << left << "Quantity\033[0m" << endl;
-                cout << item;
-
-                Inventory.modifyDetails(input);
-
-                item = Inventory.findStockById(item->getStockId());
-                cout << "\n\t\t\t\t\t\033[32m----NEW DETAILS----\033[0m\n\n";
-                cout << "\t\t\033[32m" << setw(8) << left << "Stock Id";
-                cout << "\t\t" << setw(20) << left << "Name";
-                cout << "\t\t" << setw(8) << left << "Price";
-                cout << "\t\t" << setw(20) << left << "Category";
-                cout << "\t\t" << setw(8) << left << "Quantity\033[0m" << endl;
-                cout << item;
-
-                report.logActivity("Item " + item->getName() + " details's were updated.");
-                Pause();
-
-                item = NULL;
+                //item = NULL;
                 break;
 
             case 6:
@@ -484,7 +545,12 @@ void Warehouse::orderMenu() {
                 //cin >> order;
 
                 cout << "\n\n\t\tEnter Order ID: ";
-                order->setOrderId(getNumberFromUser(4));
+                id = getNumberFromUser(4);
+
+                if (id == 0)
+                    throw invalid_argument("Order with this id cannot be added !!\t try different id !!");
+               
+                order->setOrderId(id);
 
                 order->addItems(Inventory);
 
@@ -540,6 +606,7 @@ void Warehouse::orderMenu() {
 
 void Warehouse::staffMenu() {
     int choice = 0;
+    int tries = 2;
     Staff* staff = new Staff();
     string input = "";
     while (true) {
@@ -560,7 +627,7 @@ void Warehouse::staffMenu() {
         try {
             switch (choice) {
             case 1:
-                while (true) {
+                while (tries != 0) {
                     LoadingScreen("Loading");
 
                     cout << "\t\t\t\t\t\033[34m:: STAFF MANAGMENT ::\033[0m\n\t\t\t\t\t";
@@ -568,7 +635,7 @@ void Warehouse::staffMenu() {
                     try {
                         cin >> staff;
                         if (Employees.staffExists(*staff)) {
-                            cerr << "\033[31mStaff with this name or id already exists !!\t Try Again with different values.\033[0m";
+                            throw invalid_argument("\033[31mStaff with this name or id already exists !!\t Try Again with different values.\033[0m");
                         }
                         else {
                             Employees.addToList(*staff);
@@ -576,16 +643,19 @@ void Warehouse::staffMenu() {
                             report.logActivity("Staff of id " + to_string(staff->getID()) + " was added to the list.");
                             break;
                         }
+                         Pause();
                     }
                     catch (exception& e) {
                         cerr << "\n\n\t\033[31mError: " << e.what() << "\033[0m" << endl;
+                        tries--;
+                        cerr << "\n\t\t Tries left: " << tries;
                         Pause();
                     }
 
                 }
 
-                Pause();
-                staff = NULL;
+                //staff = NULL;
+                tries = 2;
                 break;
 
             case 2:
@@ -632,7 +702,7 @@ void Warehouse::staffMenu() {
                 cout << staff << endl;
                 
                 Pause();
-                staff = NULL;
+                //staff = NULL;
                 break;
 
 
@@ -671,7 +741,7 @@ void Warehouse::staffMenu() {
 
                 report.logActivity("Staff of id " + to_string(staff->getID()) + " was updated.");
                 Pause();
-                staff = NULL;
+                //staff = NULL;
                 break;
 
             case 5:
@@ -701,6 +771,7 @@ void Warehouse::staffMenu() {
 
 void Warehouse::supplyMenu() {
     int choice = 0;
+    int tries = 2;
     Supplier* supplier = new Supplier();
     string input = "";
 
@@ -736,22 +807,31 @@ void Warehouse::supplyMenu() {
                 break;
 
             case 3:
-                LoadingScreen("Loading");
-                cout << "\t\t\t\t\t\033[34m:: SUPPLY MANAGMENT ::\033[0m\n\t\t\t\t\t";
-                DrawBlueLine(22, '-');
-                while (true) {
-                    cin >> supplier;
-                    if (Suppliers.supplierExists(*supplier)) {
-                        throw runtime_error("Supplier with this name or id already exists !!\t Try Again with different values.");
+                while (tries != 0) {
+                    LoadingScreen("Loading");
+                    cout << "\t\t\t\t\t\033[34m:: SUPPLY MANAGMENT ::\033[0m\n\t\t\t\t\t";
+                    DrawBlueLine(22, '-');
+                    try {
+                        cin >> supplier;
+                        if (Suppliers.supplierExists(*supplier)) {
+                            throw runtime_error("Supplier with this name or id already exists !!\t Try Again with different values.");
+                        }
+                        else {
+                            Suppliers.addItem(Inventory);
+                            Suppliers.addToList(*supplier);
+                            cout << "\n\n\t\033[32mNew supplier successfully added!!\033[0m";
+                            report.logActivity("Supplier of id " + to_string(supplier->getID()) + " was added to the list.");
+                            Pause();
+                            break;
+                        }
                     }
-                    else {
-                        Suppliers.addToList(*supplier);
-                        cout << "\n\n\t\033[32mNew supplier successfully added!!\033[0m";
-                        report.logActivity("Supplier of id " + to_string(supplier->getID()) + " was added to the list.");
-                        break;
+                    catch (exception& e) {
+                        cerr << "\n\n\t\033[31mError: " << e.what() << "\033[0m" << endl;
+                        tries--;
+                        cerr << "\n\t\t Tries left: " << tries;
+                        Pause();
                     }
                 }
-                Pause();
                 break;
 
             case 4:

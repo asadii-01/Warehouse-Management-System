@@ -25,6 +25,11 @@ public:
 	// Modify details of supplier 
 	void modifyDetails(string name) override;
 
+	// Merge Sort
+	void merge(vector<Supplier*>& arr, int left, int mid, int right);
+	void mergeSort(vector<Supplier*>& arr, int left, int right);
+	void sortItems();
+
 	// Find a staff by its name
 	Supplier* findSupplierByName(string name);
 	Supplier* findSupplierById(int id);

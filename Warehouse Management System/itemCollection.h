@@ -47,4 +47,5 @@ public:
 
     //Display items
     void displayList() override;
+    void displayMenu();
 };
