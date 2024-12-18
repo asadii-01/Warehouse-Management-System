@@ -24,6 +24,8 @@ public:
 
 	void priortize();
 
+	void clear();
+
 	//void displayOrders();
 };
 

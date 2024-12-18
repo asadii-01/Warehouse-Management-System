@@ -67,7 +67,7 @@
       <Filter>Source Files\Base Classes</Filter>
     </ClCompile>
     <ClCompile Include="doublylinkedlist.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Base Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -117,7 +117,7 @@
       <Filter>Header Files\Base Classes</Filter>
     </ClInclude>
     <ClInclude Include="doublylinkedlist.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Base Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

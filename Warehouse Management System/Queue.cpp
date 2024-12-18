@@ -101,6 +101,13 @@ void Queue::priortize()
     }
 }
 
+void Queue::clear()
+{
+    list.clear();
+}
+
+
+
 //void Queue::displayOrders()
 //{
 //    for (const auto& order : list) {

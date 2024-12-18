@@ -229,6 +229,8 @@ void OrderCollection::saveToFile(string filename) {
         for (const auto o : orderList.allOrders()) {
             o->WriteToFile(Writer);
         }
+        
+        orderList.clear();
 
         Writer.close();
     }

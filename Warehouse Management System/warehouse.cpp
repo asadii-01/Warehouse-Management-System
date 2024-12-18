@@ -488,7 +488,7 @@ void Warehouse::orderMenu() {
 
                 order->addItems(Inventory);
 
-                if (Orders.orderExists(*order)) {
+                if (!Orders.orderExists(*order)) {
                     throw runtime_error("Order with this id already exists !!\t try different id !!");
                 }
                 else {
