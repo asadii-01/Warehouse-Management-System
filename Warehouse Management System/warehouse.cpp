@@ -57,6 +57,7 @@ void Warehouse::Run(){
         
         report.logActivity("Staff logged out successfully.");
         report.saveToFile("record.txt");
+        ExitSound();
     }
     catch (exception& e) {
         cerr << "\n\n\t\033[31mError: " << e.what() << "\033[0m" << endl;

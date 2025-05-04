@@ -8,6 +8,9 @@
 #include <algorithm>
 #include <string>
 #include <regex>
+#include <mmsystem.h> // For PlaySound
+#pragma comment(lib, "winmm.lib") // Link the multimedia library
+
 
 // Input functions
 static int getNumberFromUser(int len) {
@@ -169,6 +172,13 @@ static bool isValidEmail(const string& email) {
     return regex_match(email, pattern);
 }
 static bool isValidName(const string& name) {
+    if (std::all_of(name.begin(), name.end(), ::isalpha)) {
+        return true;
+    }
+    return false;
+}
+
+static bool isValidItem(const string& name) {
     if (std::all_of(name.begin(), name.end(), ::isdigit)) {
         return false;
     }
@@ -190,6 +200,16 @@ static bool ShowNotification(const wchar_t* title, const wchar_t* message) {
     else if (response == IDNO) {
         return false;
     }
+}
+
+static void WelcomeSound() {
+    const wchar_t* soundFilePath = L"welcome.wav";
+    PlaySound(soundFilePath, NULL, SND_FILENAME | SND_SYNC);
+}
+
+static void ExitSound() {
+    const wchar_t* soundFilePath = L"Exit.wav";
+    PlaySound(soundFilePath, NULL, SND_FILENAME | SND_SYNC);
 }
 
 // Functions to draw lines
@@ -243,14 +263,15 @@ static void Intro() {
     cout << "\n\t\t\t    \033[34m" << char(186) << string(53, ' ') << char(186) << "\033[0m";
     cout << "\n\t\t\t    \033[34m" << char(186) << "\033[33m" << string(16, ' ') << setw(12) << internal << "SYSTEM" << string(25, ' ') << "\033[34m" << char(186) << "\033[0m";
     cout << "\n\t\t\t    \033[34m"<<char(186) << string(53, ' ') << char(186) << "\n\t\t\t    "<< char(186) << string(53, ' ') << char(186) << "\n\t\t\t    "<<char(186) << string(53, ' ') << char(186)<<"\033[0m";
-    cout << "\n\t\t\t    \033[34m" << char(186) << "\033[0m" << string(9, ' ') << "MADE BY : Asad Tauqeer & Asim Raza" << string(10, ' ') << "\033[34m" << char(186) << "\033[0m";
+    cout << "\n\t\t\t    \033[34m" << char(186) << "\033[0m" << string(12, ' ') << "MADE BY : Asad Tauqeer" << string(19, ' ') << "\033[34m" << char(186) << "\033[0m";
     cout << "\n\t\t\t    \033[34m" << char(186) << string(53, ' ') << char(186) << "\033[0m";
-    cout << "\n\t\t\t    \033[34m" << char(186) << "\033[0m" << string(8, ' ') << "ROLL NO. : 23021519-160 & 23021519-135" << string(7, ' ') << "\033[34m" << char(186) << "\033[0m";
+    cout << "\n\t\t\t    \033[34m" << char(186) << "\033[0m" << string(11, ' ') << "ROLL NO. : 23021519-160" << string(19, ' ') << "\033[34m" << char(186) << "\033[0m";
     cout << "\n\t\t\t    \033[34m" << char(186) << string(53, ' ') << char(186) << "\n\t\t\t    " << char(186) << string(53, ' ') << char(186) << "\033[0m";
     cout << "\n\t\t\t    ";
     DrawBlueLine(1, 200);
     DrawBlueLine(53, 205);
     DrawBlueLine(1, 188);
+    WelcomeSound();
     Pause();
 }
 
@@ -301,7 +322,7 @@ static istream& operator>>(istream& cin, StockItem* s) {
     cout << "\n\n\t\tEnter Name of Item: ";
     s->name = getStringFromUser(20);
 
-    if (!isValidName(s->name)) {
+    if (!isValidItem(s->name)) {
         throw invalid_argument("Item with such name cannot be made !!\t Try Again with different values.");
     }
 
@@ -315,8 +336,8 @@ static istream& operator>>(istream& cin, StockItem* s) {
     cout << "\n\n\t\tEnter Quantity: ";
     s->quantity = getNumberFromUser(5);
 
-    if (s->quantity == 0) {
-        throw invalid_argument("Item with quantity 0 cannot be made !!\t Try Again with different values.");
+    if (s->quantity < 10) {
+        throw invalid_argument("Item with quantity 10 cannot be made !!\t Try Again with different values.");
     }
 
     cout << "\n\n\t\tCategories are : ELECTRONICS, COMPUTER, AUTOMOTIVE, SPORTS, CLOTHING, FURNITURE";

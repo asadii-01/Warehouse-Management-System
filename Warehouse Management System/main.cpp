@@ -16,7 +16,9 @@ int main() {
     main_warehouse.Run();
 
     LoadingScreen("\033[31mExiting Program");
+    
     Exit();
 
 	return 0;
 }
+

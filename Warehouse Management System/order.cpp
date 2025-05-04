@@ -49,6 +49,10 @@ void Order::addItems(ItemCollection& inventory){
 		cout << "\n\n\t\tEnter Quantity of item ordered : ";
 		quantity = getNumberFromUser(5);
 
+		if (quantity > inventory.findStockByName(input)->getQuantity()) {
+			throw runtime_error("Not enough stock in the inventory to add in order. Contact inventory clerk!!\t Enter correct item name");
+		}
+
 		addItemToOrder(input,quantity);
 
 		cout << "\n\n\t\t\033[33mWant to add another item to the order? <Y/N> : \033[0m ";

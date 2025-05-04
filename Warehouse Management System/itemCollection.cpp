@@ -63,7 +63,7 @@ void ItemCollection::modifyDetails(string name) {
                         cerr << "\n\t\t\033[31mItem with this name already exists !!\t Try Again with different value.\033[0m";
                     }
                     else {
-                        if (isValidName(newInput)) {
+                        if (isValidItem(newInput)) {
                             throw invalid_argument("Item with such name cannot be made !!\t Try Again with different values.");
                         }
                         item->setName(newInput);
@@ -86,8 +86,8 @@ void ItemCollection::modifyDetails(string name) {
             case 3:
                 cout << "\n\n\t\tEnter amount of stock being added : ";
                 newInt = getNumberFromUser(10);
-                if (newInt == 0) {
-                    throw invalid_argument("Item with quantity 0 cannot be made !!\t Try Again with different values.");
+                if (newInt < 10) {
+                    throw invalid_argument("Item with quantity 10 cannot be made !!\t Try Again with different values.");
                 }
                 item->addQuantity(newInt);
                 cout << "\n\t\033[32mStock updated!!\033[0m";
