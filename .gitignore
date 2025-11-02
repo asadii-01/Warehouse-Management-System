@@ -30,8 +30,8 @@
 
 # Ignore IDE-specific files
 .vscode/
+.vs/Warehouse Management System/
 .idea/
-.vs/
 *.iml
 *.suo
 *.ncb
